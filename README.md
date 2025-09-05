@@ -1,139 +1,119 @@
-# 🚀 Production-Grade LLM Orchestration with LangChain, Google GEMMA, Groq & Ollama LLaMA2
+# 🎤 LangChain Orchestrator AI App
 
-A **production-ready, modular LLM orchestration framework** leveraging **FastAPI**, **LangChain**, and **Streamlit**. This system enables seamless real-time integration of multiple powerful LLMs including **Google GEMMA**, **Groq’s Gemma2**, and **Ollama’s LLaMA2**—ideal for essay and poetry generation use cases in AI-driven applications.This stack is built for AI researchers, backend engineers, and data scientists seeking a production-grade infrastructure that supports seamless interaction with state-of-the-art LLMs.
+A **production-ready, modular LLM orchestration framework** leveraging **FastAPI**, **LangChain**, and **Streamlit**.  
+This system integrates multiple powerful LLMs—**Google GEMMA**, **Groq’s Gemma2**, and **Ollama’s LLaMA2**—with **speech recognition for natural voice input**, making it ideal for essay and poetry generation in AI-driven applications.
 
-This project demonstrates the practical usage of multi-agent orchestration, secure API design, and a lightweight frontend—all aligned with enterprise-grade standards, making it perfect for high-performance AI systems in real-world deployments.
+This stack is designed for **AI researchers, backend engineers, and data scientists** who want a production-grade setup that demonstrates secure API design, multi-model orchestration, and a lightweight UI aligned with enterprise standards.
 
----
+------------------------------------------------------------------------
 
-## 🔍 Key Highlights
+## 🚀 Features
 
-- 🧠 **Multi-Model Orchestration**: Simultaneous use of Google GEMMA (Generative AI), Groq's Gemma2, and Ollama's LLaMA2 using LangChain Agents.
-- 🚀 **FastAPI Backend**: Fully functional backend to handle inference requests and serve LLM-generated content via REST APIs.
-- 🌐 **Streamlit Frontend**: A minimalist and intuitive UI to interact with the backend and generate results in real-time.
-- 🔐 **Secure Configuration**: Environment-based API management using `.env` files.
-- 📊 **LangChain Tracing v2**: Debugging and performance tracing enabled out-of-the-box.
+-   🎙️ **Voice-to-Text Input** for essay/poem generation using Google
+    Speech Recognition.\
+-   📝 **Essay Generation** powered by **Groq's Gemma-2-9b-it** model.\
+-   🎵 **Poem Generation** powered by **LLaMA2 via Ollama**.\
+-   ⚡ **FastAPI + LangServe backend** to serve AI models.\
+-   🌐 **Streamlit frontend** for easy interaction.
 
----
+------------------------------------------------------------------------
 
-## 🧠 Real-World Use Cases
+## 🛠️ Installation
 
-- **AI-Powered Content Generation Systems**
-- **Creative Writing Tools for Students and Writers**
-- **Internal Knowledge Assistants in Enterprises**
-- **Multilingual Essay and Poetry Generation Bots**
-- **Rapid Prototyping of Multi-Model LLM Solutions**
-- **Educational Platforms Enhancing Language Learning**
+1.  Clone the repository:
 
----
+    ``` bash
+    git clone https://github.com/your-username/langchain-orchestrator-ai-app.git
+    cd langchain-orchestrator-ai-app
+    ```
 
-## 📁 Project Structure
+2.  Create and activate virtual environment:
 
-```
-├── app.py              # FastAPI backend for LLM orchestration
-├── client.py           # Streamlit frontend client
-├── .env                # Environment variables for API keys
-├── requirements.txt    # Python dependencies
-├── README.md           # Documentation file
-```
+    ``` bash
+    python -m venv venv
+    source venv/bin/activate   # Linux/Mac
+    venv\Scripts\activate    # Windows
+    ```
 
----
+3.  Install dependencies:
 
-## ⚙️ Installation & Setup
+    ``` bash
+    pip install -r requirements.txt
+    ```
 
-### Prerequisites
+4.  Set up environment variables in `.env` file:
 
-- Python 3.8+
-- `pip` (Python package installer)
-- Access to API keys for Google Generative AI, Groq, and Langchain
+    ``` env
+    LANGCHAIN_API_KEY=your_langchain_api_key
+    GROQ_API_KEY=your_groq_api_key
+    GOOGLE_API_KEY=your_google_api_key
+    ```
 
-### Step-by-Step
+------------------------------------------------------------------------
 
-1. **Clone the Repository**
-```bash
-git clone https://github.com/yourusername/langchain-llm-orchestrator.git
-cd langchain-llm-orchestrator
-```
+## ▶️ Running the App
 
-2. **Create & Activate a Virtual Environment**
-```bash
-python -m venv venv
-source venv/bin/activate  # On Linux/Mac
-venv\Scripts\activate   # On Windows
+### 1. Start FastAPI backend:
+
+``` bash
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-3. **Install Dependencies**
-```bash
-pip install -r requirements.txt
+### 2. Start Streamlit frontend:
+
+``` bash
+streamlit run app.py
 ```
 
-4. **Set Up Environment Variables**
-Create a `.env` file with the following content:
-```
-LANGCHAIN_API_KEY=your_langchain_api_key
-GROQ_API_KEY=your_groq_api_key
-GOOGLE_API_KEY=your_google_api_key
-```
+------------------------------------------------------------------------
 
----
+## 📂 Project Structure
 
-## 🚀 Running the App
+    ├── app.py              # Streamlit frontend (UI with text + voice input)
+    ├── main.py             # FastAPI backend with LangServe routes
+    ├── requirements.txt    # Python dependencies
+    ├── .env                # API Keys and environment variables
+    └── README.md           # Project documentation
 
-### Backend (FastAPI)
+------------------------------------------------------------------------
 
-```bash
-uvicorn app:app --host 0.0.0.0 --port 8000 --reload
-```
+## 🎤 Example Usage
 
-### Frontend (Streamlit)
+### Essay Generation
 
-In a new terminal:
+-   Enter a topic manually OR speak into the mic → Generates a
+    **100-word essay**.
 
-```bash
-streamlit run client.py
-```
+### Poem Generation
 
----
+-   Enter a topic manually OR speak into the mic → Generates a
+    **100-word poem**.
 
-## 🔗 API Endpoints
+------------------------------------------------------------------------
 
-| Endpoint     | Method | Description                              |
-|--------------|--------|------------------------------------------|
-| `/genai`     | POST   | Interacts with Google GEMMA (Generative AI) |
-| `/essay`     | POST   | Generates essay using Groq’s Gemma2 model |
-| `/poem`      | POST   | Generates poem using Ollama LLaMA2        |
+## 🔧 Tech Stack
 
----
+-   [LangChain](https://www.langchain.com/)
+-   [Ollama](https://ollama.ai/)
+-   [Groq](https://groq.com/)
+-   [Google Generative AI](https://ai.google/)
+-   [FastAPI](https://fastapi.tiangolo.com/)
+-   [Streamlit](https://streamlit.io/)
+-   [SpeechRecognition](https://pypi.org/project/SpeechRecognition/)
 
-## 📦 Dependencies
+------------------------------------------------------------------------
 
-- fastapi
-- uvicorn
-- langchain
-- langchain_groq
-- langchain_google_genai
-- langchain_community (Ollama support)
-- langserve
-- python-dotenv
-- streamlit
-- requests
+## 📝 License
 
----
+This project is licensed under the MIT License.
 
-## 📌 Notes
+------------------------------------------------------------------------
 
-- The `.env` file is critical for keeping your API keys secure.
-- Ensure all API services are enabled and properly authenticated.
-- This stack is designed for **local execution**; to deploy it, update the `host`, `CORS`, and networking rules accordingly.
+## 🤝 Contributing
 
----
+Pull requests are welcome! For major changes, please open an issue first
+to discuss what you would like to change.
 
-## 🪪 License
+------------------------------------------------------------------------
 
-MIT License
 
----
-
-## 📬 Contact
-
-Have questions or suggestions? Feel free to reach out at: **garvsharma835@gmail.com**
